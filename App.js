@@ -7,7 +7,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Olá!</Text>
         <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text>Shake your phone to open the devdadseloper menu.</Text>
       </View>
     );
   }
