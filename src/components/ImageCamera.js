@@ -35,13 +35,11 @@ export default class ImagePickerExample extends React.Component {
     } else {
     return (
       <View style={styles.viewStyle}>
-        <Button
-          title="Alterar foto"
-          onPress={this._pickImage}
-        />
         {image &&
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-
+          <Image source={{ uri: image }} style={{ width: 280, height: 200 }} />}
+          <TouchableOpacity onPress={this._pickImage}>
+              <Text style={{ textAlign: 'center' }}> Alterar imagem </Text>
+          </TouchableOpacity>
       </View>
     );
   }
