@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, View } from 'react-native';
+import { Image, View, Button } from 'react-native';
 import { ImagePicker } from 'expo';
 
 export default class ImagePickerExample extends React.Component {
@@ -32,6 +32,7 @@ export default class ImagePickerExample extends React.Component {
         />
         {image &&
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+
       </View>
     );
   }

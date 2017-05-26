@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ImagePicker from './src/components/ImagePicker';
 import ImageCamera from './src/components/ImageCamera';
 
@@ -7,8 +7,6 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Olá!</Text>
-        <ImagePicker />
         <ImageCamera />
       </View>
     );

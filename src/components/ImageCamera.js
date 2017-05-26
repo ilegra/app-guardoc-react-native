@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, View } from 'react-native';
+import { Image, View, Button, TouchableOpacity, Text } from 'react-native';
 import { ImagePicker } from 'expo';
 
 export default class ImagePickerExample extends React.Component {
@@ -23,24 +23,35 @@ export default class ImagePickerExample extends React.Component {
 
   render() {
     const { image } = this.state;
-
+    if (image === null) {
+      return (
+        <View style={styles.viewStyle}>
+          <TouchableOpacity onPress={this._pickImage}>
+            <Image source={require('../img/ic_add.png')} />
+            <Text style={{ textAlign: 'center' }}> Adicionar imagem </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    } else {
     return (
       <View style={styles.viewStyle}>
         <Button
-          title="Tire uma foto"
+          title="Alterar foto"
           onPress={this._pickImage}
         />
         {image &&
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+
       </View>
     );
+  }
   }
 }
 
 const styles = {
   viewStyle: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 };
