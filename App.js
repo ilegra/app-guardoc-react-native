@@ -7,9 +7,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.viewStyle}>
+        <Text style={styles.textStyle}>
             Meus documentos
-          </Text>
+        </Text>
           <Card>
             <CardSection>
               <View style={styles.headerContentStyle}>
@@ -18,9 +18,7 @@ export default class App extends React.Component {
               </View>
             </CardSection>
             <CardSection>
-              <Image
-                style={styles.imageStyle}
-              />
+              <Image style={styles.imageStyle} />
             </CardSection>
           </Card>
       </View>
@@ -38,6 +36,8 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
+  },
+  textStyle: {
     textAlign: 'center'
   },
   headerContentStyle: {
