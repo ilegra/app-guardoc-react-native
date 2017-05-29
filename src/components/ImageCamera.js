@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, View, TouchableOpacity, Text } from 'react-native';
 import { ImagePicker } from 'expo';
 
-export default class ImagePickerExample extends React.Component {
+export default class ImageCamera extends React.Component {
   state = {
     image: null,
   };
