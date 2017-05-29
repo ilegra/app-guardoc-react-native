@@ -7,7 +7,6 @@ export default class ImagePickerExample extends React.Component {
     image: null,
   };
 
-
   _pickImage = async () => {
     const result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
