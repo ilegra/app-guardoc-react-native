@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import ImagePicker from './src/components/ImagePicker';
 import ImageCamera from './src/components/ImageCamera';
 
 export default class App extends React.Component {
