@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { documentUpdate } from '../actions';
 import { View, Text } from 'react-native';
 import { Card, CardSection, Button } from './common';
 import DocumentForm from './DocumentForm';
 
-export default class DocumentCreate extends Component {
+class DocumentCreate extends Component {
+
   render() {
     return (
       <Card>
-        <DocumentForm />
+        <DocumentForm {...this.props} />
 
         <CardSection>
           <Button>
@@ -18,3 +21,14 @@ export default class DocumentCreate extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { name, number } = state.documentForm;
+
+  return { name, number };
+};
+
+
+export default connect(mapStateToProps, {
+  documentUpdate
+})(DocumentCreate);
