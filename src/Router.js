@@ -5,8 +5,8 @@ import DocumentCreate from './components/DocumentCreate';
 
 const RouterComponent = () => {
   return (
-    <Router>
-      <Scene key="root">
+    <Router sceneStyle={{ paddingTop: 65 }}>
+      <Scene key="main">
         <Scene
           onRight={() => Actions.documentCreate()}
           rightTitle="Add"
