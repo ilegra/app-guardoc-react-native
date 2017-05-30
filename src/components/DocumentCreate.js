@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { documentUpdate } from '../actions';
+import { documentUpdate, documentClear } from '../actions';
 import { View, Text } from 'react-native';
 import { Card, CardSection, Button } from './common';
 import DocumentForm from './DocumentForm';
 
 class DocumentCreate extends Component {
+  componentWillMount() {
+    this.props.documentClear();
+  }
 
   render() {
     return (
@@ -30,5 +33,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-  documentUpdate
+  documentUpdate,
+  documentClear
 })(DocumentCreate);
