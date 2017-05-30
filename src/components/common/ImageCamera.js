@@ -20,7 +20,7 @@ export default class ImageCamera extends React.Component {
 
   render() {
     const { image } = this.state;
-    let imageUrl = require('../img/camera.png');
+    let imageUrl = require('../../img/camera.png');
 
     if (image != null) {
        imageUrl = { uri: image };
