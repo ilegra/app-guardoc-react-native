@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { documentUpdate, documentClear } from '../actions';
-import { View, Text } from 'react-native';
+import { documentUpdate, documentClear, documentCreate } from '../actions';
 import { Card, CardSection, Button } from './common';
 import DocumentForm from './DocumentForm';
 
@@ -34,5 +33,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   documentUpdate,
+  documentCreate,
   documentClear
 })(DocumentCreate);

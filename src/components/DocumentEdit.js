@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { documentUpdate, documentClear } from '../actions';
+import { documentUpdate, documentClear, documentSave } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 import DocumentForm from './DocumentForm';
 
@@ -56,5 +56,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   documentUpdate,
+  documentSave,
   documentClear
 })(DocumentCreate);
