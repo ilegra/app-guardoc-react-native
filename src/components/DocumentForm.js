@@ -12,7 +12,6 @@ class DocumentForm extends Component {
       <View>
         <CardSection>
           <Input
-            label="Nome do documento"
             placeholder="CPF"
             value={this.props.name}
             onChangeText={value => this.props.documentUpdate({ prop: 'name', value })}
@@ -20,7 +19,6 @@ class DocumentForm extends Component {
         </CardSection>
         <CardSection>
           <Input
-            label="Número do documento"
             placeholder="123.456.789-00"
             value={this.props.number}
             onChangeText={value => this.props.documentUpdate({ prop: 'number', value })}

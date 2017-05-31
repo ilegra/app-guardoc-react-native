@@ -6,21 +6,57 @@ import DocumentEdit from './components/DocumentEdit';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router
+      navigationBarStyle={styles.navBar}
+      titleStyle={styles.navTitle}
+      sceneStyle={{ paddingTop: 65 }}
+    >
       <Scene key="main">
         <Scene
-          onRight={() => Actions.documentCreate()}
-          rightTitle="Add"
           key="documentList"
           component={DocumentList}
           title="Meus documentos"
-          init
+          rightTitle="Add"
+          rightButtonTitleStyle={{ tintColor: 'red' }}
+          rightButtonImage={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+          onRight={() => Actions.documentCreate()}
         />
-        <Scene key="documentCreate" component={DocumentCreate} title="Adicionar documento" />
+        <Scene
+          key="documentCreate"
+          component={DocumentCreate}
+          title="Adicionar documento"
+          leftButtonIconStyle={styles.leftButtonIcon}
+          leftButtonStyle={styles.leftButton}
+        />
         <Scene key="documentEdit" component={DocumentEdit} title="Atualizar documento" />
       </Scene>
     </Router>
   );
+};
+
+
+const styles = {
+  navBar: {
+   flex: 2,
+   backgroundColor: '#b8d329',
+   height: 80,
+   borderWidth: 0
+ },
+ navTitle: {
+   color: 'white',
+   paddingTop: 30,
+   fontWeight: 'bold'
+ },
+ leftButtonIcon: {
+     tintColor: 'white'
+ },
+ leftButton: {
+   paddingTop: 10
+ },
+ onRight: {
+   tintColor: 'green' // changing navbar title color
+ }
+
 };
 
 export default RouterComponent;
