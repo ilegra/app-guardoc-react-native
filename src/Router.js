@@ -9,7 +9,7 @@ const RouterComponent = () => {
     <Router
       navigationBarStyle={styles.navBar}
       titleStyle={styles.navTitle}
-      sceneStyle={{ paddingTop: 65 }}
+      sceneStyle={{ paddingTop: 90 }}
     >
       <Scene key="main">
         <Scene

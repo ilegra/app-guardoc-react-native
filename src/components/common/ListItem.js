@@ -4,15 +4,20 @@ import { Card, CardSection } from './';
 
 const ListItem = ({ document }) => {
   const { headerContentStyle,
-          headerTextStyle,
+          headerNameStyle,
+          headerNumberStyle,
+          headerNumberContentStyle,
+          headerStyle,
           imageStyle
   } = styles;
   return (
     <Card>
-      <CardSection>
+      <CardSection style={headerStyle}>
           <View style={headerContentStyle}>
-            <Text style={headerTextStyle}>{document.name}</Text>
-            <Text>{document.number}</Text>
+            <Text style={headerNameStyle}>{document.name}</Text>
+            <View style={headerNumberStyle}>
+              <Text style={headerNumberContentStyle}>{document.number}</Text>
+            </View>
           </View>
         </CardSection>
         <CardSection>
@@ -26,26 +31,40 @@ const ListItem = ({ document }) => {
 };
 
 const styles = {
+
+  headerStyle: {
+    backgroundColor: '#599db2'
+  },
+
   headerContentStyle: {
+    flex: 1,
+    paddingTop: 10,
+    paddingBottom: 15,
+    paddingRight: 7,
+    paddingLeft: 7,
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
 
-  headerTextStyle: {
-    fontSize: 18
+  headerNameStyle: {
+    fontSize: 18,
+    color: 'white',
+    marginBottom: 7
   },
 
-  thumbnailStyle: {
-    height: 50,
-    width: 50
+  headerNumberStyle: {
+      backgroundColor: '#b8d329',
+      padding: 5,
+      justifyContent: 'space-around'
   },
 
-  thumbnailContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10
+  headerNumberContentStyle: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: 'white',
+      justifyContent: 'space-around'
   },
+
 
   imageStyle: {
     height: 250,

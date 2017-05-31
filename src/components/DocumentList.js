@@ -11,7 +11,7 @@ export default class DocumentList extends Component {
         image: imageUrl
       };
     return (
-      <View style={{ margin: 128 }}>
+      <View>
         <ListItem document={document} />
       </View>
     );
