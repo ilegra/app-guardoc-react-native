@@ -1,12 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { documentUpdate, documentClear, documentCreate } from '../actions';
+import { Card, CardSection, Button } from './common';
+import DocumentForm from './DocumentForm';
 
-export default class DocumentCreate extends Component {
+class DocumentCreate extends Component {
+  componentWillMount() {
+    this.props.documentClear();
+  }
+
   render() {
     return (
-      <View style={{ margin: 128 }}>
-        <Text>Eu sou uma tela para adicionar documentos!</Text>
-      </View>
+      <Card>
+        <DocumentForm {...this.props} />
+
+        <CardSection>
+          <Button>
+            Salvar
+          </Button>
+        </CardSection>
+      </Card>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { name, number } = state.documentForm;
+
+  return { name, number };
+};
+
+
+export default connect(mapStateToProps, {
+  documentUpdate,
+  documentCreate,
+  documentClear
+})(DocumentCreate);

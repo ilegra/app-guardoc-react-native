@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import DocumentList from './components/DocumentList';
 import DocumentCreate from './components/DocumentCreate';
+import DocumentEdit from './components/DocumentEdit';
 
 const RouterComponent = () => {
   return (
@@ -13,9 +14,10 @@ const RouterComponent = () => {
           key="documentList"
           component={DocumentList}
           title="Meus documentos"
-          initial
+          init
         />
         <Scene key="documentCreate" component={DocumentCreate} title="Adicionar documento" />
+        <Scene key="documentEdit" component={DocumentEdit} title="Atualizar documento" />
       </Scene>
     </Router>
   );
