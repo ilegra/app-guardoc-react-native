@@ -20,7 +20,7 @@ class LoginForm extends Component {
 
     return (
       <Button>
-        Login
+        Entrar
       </Button>
     );
   }
@@ -40,8 +40,8 @@ class LoginForm extends Component {
         <CardSection>
           <Input
             secureTextEntry
-            label="Password"
-            placeholder="password"
+            label="Senha"
+            placeholder="******"
             onChangeText={this.onPasswordChange.bind(this)}
             value={this.props.password}
           />
@@ -54,6 +54,11 @@ class LoginForm extends Component {
         <CardSection>
           {this.renderButton()}
         </CardSection>
+        <CardSection>
+          <Text style={styles.infoTextStyle}>
+            *Se você estiver entrando pela primeira vez, insira os dados para cadastro.
+          </Text>
+        </CardSection>
       </Card>
     );
   }
@@ -64,6 +69,10 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  infoTextStyle: {
+    fontSize: 12,
+    color: 'rgba(0,0,0,0.4)'
   }
 };
 
