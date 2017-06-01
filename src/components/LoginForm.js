@@ -13,13 +13,17 @@ class LoginForm extends Component {
     this.props.passwordChanged(text);
   }
 
+  onButtonPress() {
+    this.props.loginUser();
+  }
+
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
-      <Button>
+      <Button onPress={this.onButtonPress.bind(this)}>
         Entrar
       </Button>
     );
