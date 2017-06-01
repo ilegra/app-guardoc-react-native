@@ -9,13 +9,19 @@ class DocumentCreate extends Component {
     this.props.documentClear();
   }
 
+  onButtonPress() {
+    const { name, number, image } = this.props;
+
+    this.props.documentCreate({ name, number, image });
+  }
+
   render() {
     return (
       <Card>
         <DocumentForm {...this.props} />
 
         <CardSection>
-          <Button>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Salvar
           </Button>
         </CardSection>
@@ -25,9 +31,9 @@ class DocumentCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name, number } = state.documentForm;
+  const { name, number, image } = state.documentForm;
 
-  return { name, number };
+  return { name, number, image };
 };
 
 

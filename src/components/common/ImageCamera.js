@@ -1,8 +1,10 @@
 import React from 'react';
 import { Image, View, TouchableOpacity, Text } from 'react-native';
 import { ImagePicker } from 'expo';
+import { connect } from 'react-redux';
+import { documentUpdate } from '../../actions';
 
-export default class ImageCamera extends React.Component {
+class ImageCamera extends React.Component {
   state = {
     image: null,
   };
@@ -54,3 +56,11 @@ const styles = {
     fontSize: 16
   }
 };
+
+const mapStateToProps = (state) => {
+  const { image } = state.documentForm;
+
+  return { image };
+};
+
+export default connect(mapStateToProps, { documentUpdate })(ImageCamera);

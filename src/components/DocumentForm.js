@@ -27,7 +27,10 @@ class DocumentForm extends Component {
           />
         </CardSection>
         <CardSection>
-          <ImageCamera />
+          <ImageCamera
+            value={this.props.image}
+            onChange={value => this.props.documentUpdate({ prop: 'image', value })}
+          />
         </CardSection>
       </View>
     );
@@ -35,9 +38,9 @@ class DocumentForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name, number } = state.documentForm;
+  const { name, number, image } = state.documentForm;
 
-  return { name, number };
+  return { name, number, image };
 };
 
 export default connect(mapStateToProps, { documentUpdate })(DocumentForm);

@@ -7,7 +7,8 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  number: ''
+  number: '',
+  image: '../components/img/camera.png'
 };
 
 export default (state = INITIAL_STATE, action) => {
