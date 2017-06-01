@@ -3,9 +3,10 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { View, Text, ListView } from 'react-native';
 import { documentFetch } from '../actions';
+import ListItem from './ListItem';
 
 class DocumentList extends Component {
-  
+
   componentWillMount() {
     this.props.documentFetch();
     this.createDataSource(this.props);
@@ -24,13 +25,12 @@ class DocumentList extends Component {
   }
 
   renderRow(document) {
-    return <Text document={document.name} />;
+    return <ListItem document={document} />;
   }
 
   render() {
     return (
       <View style={{ margin: 128 }}>
-        <Text>Eu sou uma lista de documentoss </Text>
         <ListView
           enableEmptySections
           dataSource={this.dataSource}

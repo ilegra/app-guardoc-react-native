@@ -58,7 +58,7 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { image } = state.documentForm;
+  const { image } = 'teste';
 
   return { image };
 };

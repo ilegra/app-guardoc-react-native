@@ -5,7 +5,8 @@ import {
   DOCUMENT_CLEAR,
   DOCUMENT_SAVE,
   DOCUMENT_CREATE,
-  DOCUMENT_FETCH
+  DOCUMENT_FETCH,
+  DOCUMENT_DELETE
 } from './types';
 
 export const documentUpdate = ({ prop, value }) => {
@@ -34,6 +35,7 @@ export const documentFetch = () => {
     firebase.database().ref(`/users/${currentUser.uid}/documents`)
       .on('value', snapshot => {
         dispatch({ type: DOCUMENT_FETCH, payload: snapshot.val() });
+          console.log(snapshot.val());
       });
   };
 };
@@ -54,10 +56,11 @@ export const documentSave = ({ name, number, image, uid }) => {
 export const documentDelete = ({ uid }) => {
   const { currentUser } = firebase.auth();
 
-  return () => {
+  return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents/${uid}`)
       .remove()
       .then(() => {
+        dispatch({ type: DOCUMENT_DELETE });
         Actions.main({ type: 'reset' });
       });
   };

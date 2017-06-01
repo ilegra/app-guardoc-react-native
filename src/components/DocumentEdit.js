@@ -22,8 +22,8 @@ class DocumentCreate extends Component {
 
   onAccept() {
     const { uid } = this.props.document;
-
     this.props.documentDelete({ uid });
+    this.setState({ showModal: false });
   }
 
   onDecline() {
