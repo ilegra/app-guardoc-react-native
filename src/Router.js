@@ -3,6 +3,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import DocumentList from './components/DocumentList';
 import DocumentCreate from './components/DocumentCreate';
 import DocumentEdit from './components/DocumentEdit';
+import LoginForm from './components/LoginForm';
 
 const RouterComponent = () => {
   return (
@@ -54,7 +55,7 @@ const styles = {
    paddingTop: 10
  },
  onRight: {
-   tintColor: 'green' // changing navbar title color
+   tintColor: 'green' 
  }
 
 };
