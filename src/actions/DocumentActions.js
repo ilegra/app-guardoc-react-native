@@ -35,7 +35,6 @@ export const documentFetch = () => {
     firebase.database().ref(`/users/${currentUser.uid}/documents`)
       .on('value', snapshot => {
         dispatch({ type: DOCUMENT_FETCH, payload: snapshot.val() });
-          console.log(snapshot.val());
       });
   };
 };
