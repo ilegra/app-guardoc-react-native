@@ -2,12 +2,14 @@ import {
   DOCUMENT_CREATE,
   DOCUMENT_UPDATE,
   DOCUMENT_CLEAR,
-  DOCUMENT_SAVE
+  DOCUMENT_SAVE,
+  DOCUMENT_DELETE
 } from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',
-  number: ''
+  number: '',
+  image: '../components/img/camera.png'
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +21,8 @@ export default (state = INITIAL_STATE, action) => {
     case DOCUMENT_CREATE:
       return INITIAL_STATE;
     case DOCUMENT_SAVE:
+      return INITIAL_STATE;
+    case DOCUMENT_DELETE:
       return INITIAL_STATE;
     default:
       return state;

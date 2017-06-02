@@ -5,6 +5,7 @@ import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -13,13 +14,17 @@ class LoginForm extends Component {
     this.props.passwordChanged(text);
   }
 
+  onButtonPress() {
+    this.props.loginUser();
+  }
+
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
-      <Button>
+      <Button onPress={this.onButtonPress.bind(this)}>
         Entrar
       </Button>
     );
