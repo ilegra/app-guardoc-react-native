@@ -23,14 +23,12 @@ export const documentCreate = ({ name, number, image }) => {
       .push({ name, number, image })
       .then(() => {
         dispatch({ type: DOCUMENT_CREATE });
-        //Actions.employeeList({ type: 'reset' });
       });
   };
 };
 
 export const documentFetch = () => {
   const { currentUser } = firebase.auth();
-  console.log(currentUser);
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents`)
       .on('value', snapshot => {
@@ -41,7 +39,6 @@ export const documentFetch = () => {
 
 export const documentSave = ({ name, number, image, uid }) => {
   const { currentUser } = firebase.auth();
-
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents/${uid}`)
       .set({ name, number, image })
@@ -54,7 +51,6 @@ export const documentSave = ({ name, number, image, uid }) => {
 
 export const documentDelete = ({ uid }) => {
   const { currentUser } = firebase.auth();
-
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents/${uid}`)
       .remove()
