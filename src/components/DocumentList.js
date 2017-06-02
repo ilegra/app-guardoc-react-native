@@ -28,9 +28,16 @@ class DocumentList extends Component {
     return <ListItem document={document} />;
   }
 
+
   render() {
+    let imageUrl = require('./img/camera.png');
+    const document = {
+        name: 'cpf',
+        number: '123499999999999999',
+        image: imageUrl
+      };
     return (
-      <View style={{ margin: 128 }}>
+      <View>
         <ListView
           enableEmptySections
           dataSource={this.dataSource}
