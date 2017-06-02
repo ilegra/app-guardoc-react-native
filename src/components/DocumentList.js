@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { View, Text, ListView } from 'react-native';
 import { documentFetch } from '../actions';
-import ListItem from './ListItem';
+import ListItem from './common/ListItem';
 
 class DocumentList extends Component {
 
@@ -30,12 +30,6 @@ class DocumentList extends Component {
 
 
   render() {
-    let imageUrl = require('./img/camera.png');
-    const document = {
-        name: 'cpf',
-        number: '123499999999999999',
-        image: imageUrl
-      };
     return (
       <View>
         <ListView
