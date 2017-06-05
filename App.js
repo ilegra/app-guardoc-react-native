@@ -3,11 +3,17 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
+import Expo from 'expo';
 import reducers from './src/reducers';
 import Router from './src/Router';
 
 export default class App extends Component {
   componentWillMount() {
+    this.initFirebase();
+    this.initAnalytics();
+  }
+
+  initFirebase() {
     const config = {
       apiKey: 'AIzaSyA5MRCidrQnDwtgqWKNQoPcvRcQCTGOtsU',
       authDomain: 'guardoc-2960e.firebaseapp.com',
@@ -17,6 +23,13 @@ export default class App extends Component {
       messagingSenderId: '1079221930643'
     };
     firebase.initializeApp(config);
+  }
+
+  initAnalytics() {
+    const segmentWriteKey = '5JfEuoeh4ZJNQ6i6676CcfMt5UvtGBDj';
+    Expo.Segment.initializeAndroid(segmentWriteKey);
+    Expo.Segment.initializeIOS(segmentWriteKey);
+    Expo.Segment.track('Tela login');
   }
 
   render() {

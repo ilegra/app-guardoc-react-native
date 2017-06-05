@@ -17,7 +17,7 @@ const RouterComponent = () => {
           key="login"
           component={LoginAuto}
           title="Logar"
-          hideNavBar={true} 
+          hideNavBar={true}
         />
       </Scene>
       <Scene key="main">
@@ -63,7 +63,7 @@ const styles = {
    paddingTop: 10
  },
  onRight: {
-   tintColor: 'green' 
+   tintColor: 'green'
  }
 
 };

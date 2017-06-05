@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Expo from 'expo';
 import { documentUpdate, documentClear, documentSave, documentDelete } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 import DocumentForm from './DocumentForm';
@@ -12,11 +13,12 @@ class DocumentCreate extends Component {
     _.each(this.props.document, (value, prop) => {
       this.props.documentUpdate({ prop, value });
     });
+    this.initAnalytics();
   }
 
   onButtonPress() {
   const { name, number, image } = this.props;
-
+  Expo.Segment.track('Action salvar alterações');
   this.props.documentSave({ name, number, image, uid: this.props.document.uid });
 }
 
@@ -24,10 +26,16 @@ class DocumentCreate extends Component {
     const { uid } = this.props.document;
     this.props.documentDelete({ uid });
     this.setState({ showModal: false });
+    Expo.Segment.track('Action sim excluir');
   }
 
   onDecline() {
     this.setState({ showModal: false });
+    Expo.Segment.track('Action não excluir');
+  }
+
+  initAnalytics() {
+    Expo.Segment.track('Tela Editar documento');
   }
 
   render() {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { View, Text, ListView } from 'react-native';
+import Expo from 'expo';
+import firebase from 'firebase';
 import { documentFetch } from '../actions';
 import ListItem from './common/ListItem';
 
@@ -10,10 +12,17 @@ class DocumentList extends Component {
   componentWillMount() {
     this.props.documentFetch();
     this.createDataSource(this.props);
+    this.initAnalytics();
   }
 
   componentWillReceiveProps(nextProps) {
     this.createDataSource(nextProps);
+  }
+
+  initAnalytics() {
+    const { currentUser } = firebase.auth();
+    Expo.Segment.identify(currentUser.uid);
+    Expo.Segment.track('Tela inicial');
   }
 
   createDataSource({ documents }) {
