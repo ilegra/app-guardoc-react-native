@@ -32,7 +32,7 @@ class DocumentCreate extends Component {
 
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
-            Salvar
+            SALVAR
           </Button>
         </CardSection>
       </Card>

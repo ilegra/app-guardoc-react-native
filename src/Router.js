@@ -48,11 +48,11 @@ const styles = {
    flex: 2,
    backgroundColor: '#b8d329',
    height: 80,
-   borderWidth: 0
+   borderWidth: 0,
+   paddingTop: 10
  },
  navTitle: {
    color: 'white',
-   paddingTop: 30,
    fontWeight: 'bold'
  },
  leftButtonIcon: {
@@ -62,10 +62,9 @@ const styles = {
    paddingTop: 10
  },
  rightButton: {
-   marginTop: 5,
    marginRight: 5,
-   width: 30,
-   height: 30
+   width: 35,
+   height: 35
  },
  onRight: {
    tintColor: 'green'

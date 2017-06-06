@@ -44,13 +44,13 @@ class DocumentCreate extends Component {
         <DocumentForm />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
-            Salvar alterações
+            SALVAR ALTERAÇÕES
           </Button>
         </CardSection>
 
         <CardSection>
           <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
-            Excluir
+            EXCLUIR
           </Button>
         </CardSection>
         <Confirm
