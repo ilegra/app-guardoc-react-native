@@ -9,7 +9,7 @@ import {
 const INITIAL_STATE = {
   name: '',
   number: '',
-  image: '../components/img/camera.png'
+  image: '../img/camera.png'
 };
 
 export default (state = INITIAL_STATE, action) => {
