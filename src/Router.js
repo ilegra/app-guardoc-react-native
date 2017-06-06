@@ -17,7 +17,7 @@ const RouterComponent = () => {
           key="login"
           component={LoginAuto}
           title="Logar"
-          hideNavBar={true} 
+          hideNavBar={true}
         />
       </Scene>
       <Scene key="main">
@@ -25,10 +25,9 @@ const RouterComponent = () => {
           key="documentList"
           component={DocumentList}
           title="Meus documentos"
-          rightTitle="Add"
-          rightButtonTitleStyle={{ tintColor: 'red' }}
-          rightButtonImage={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
           onRight={() => Actions.documentCreate()}
+          rightButtonIconStyle={styles.rightButton}
+          rightButtonImage={require('./components/img/adicionar.png')}
         />
         <Scene
           key="documentCreate"
@@ -62,8 +61,14 @@ const styles = {
  leftButton: {
    paddingTop: 10
  },
+ rightButton: {
+   marginTop: 5,
+   marginRight: 5,
+   width: 30,
+   height: 30
+ },
  onRight: {
-   tintColor: 'green' 
+   tintColor: 'green'
  }
 
 };

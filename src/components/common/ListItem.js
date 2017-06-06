@@ -1,34 +1,50 @@
-import React from 'react';
-import { Text, View, Image } from 'react-native';
-import { Card, CardSection } from './';
+import React, { Component } from 'react';
+import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { CardSection, Card } from './';
 
-const ListItem = ({ document }) => {
-  const { headerContentStyle,
-          headerNameStyle,
-          headerNumberStyle,
-          headerNumberContentStyle,
-          headerStyle,
-          imageStyle
-  } = styles;
-  return (
-    <Card>
-      <CardSection style={headerStyle}>
-          <View style={headerContentStyle}>
-            <Text style={headerNameStyle}>{document.name}</Text>
-            <View style={headerNumberStyle}>
-              <Text style={headerNumberContentStyle}>{document.number}</Text>
-            </View>
-          </View>
-        </CardSection>
-        <CardSection>
-          <Image
-            style={imageStyle}
-            source={document.image}
-          />
-        </CardSection>
-      </Card>
-  );
-};
+class ListItem extends Component {
+  onRowPress() {
+    Actions.documentEdit({ document: this.props.document });
+  }
+
+  render() {
+    const { name, number, image } = this.props.document;
+
+    const { headerContentStyle,
+            headerNameStyle,
+            headerNumberStyle,
+            headerNumberContentStyle,
+            headerStyle,
+            imageStyle
+    } = styles;
+
+    const imageUrl = require('../img/camera.png');
+
+    return (
+      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+        <View>
+            <Card style={{ alignSelf: 'stretch' }}>
+              <CardSection style={headerStyle}>
+                  <View style={headerContentStyle}>
+                    <Text style={headerNameStyle}>{name}</Text>
+                    <View style={headerNumberStyle}>
+                      <Text style={headerNumberContentStyle}>{number}</Text>
+                    </View>
+                  </View>
+                </CardSection>
+                <CardSection>
+                  <Image
+                    style={imageStyle}
+                    source={imageUrl}
+                  />
+                </CardSection>
+              </Card>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
 
 const styles = {
 
@@ -37,13 +53,12 @@ const styles = {
   },
 
   headerContentStyle: {
-    flex: 1,
     paddingTop: 10,
     paddingBottom: 15,
     paddingRight: 7,
     paddingLeft: 7,
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
 
   headerNameStyle: {
@@ -69,7 +84,7 @@ const styles = {
   imageStyle: {
     height: 250,
     flex: 1,
-    width: 200
+    width: null
   }
 
 };

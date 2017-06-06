@@ -24,11 +24,8 @@ const styles = {
     alignItems: 'center'
   },
   imageStyle: {
-    flex: 1,
-    height: 250,
-    width: 220,
-    justifyContent: 'center',
-    alignItems: 'center'
+    height: 245,
+    width: 200
   }
 };
 

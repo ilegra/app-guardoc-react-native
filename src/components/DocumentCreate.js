@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Expo from 'expo';
 import { documentUpdate, documentClear, documentCreate } from '../actions';
 import { Card, CardSection, Button } from './common';
 import DocumentForm from './DocumentForm';
@@ -7,12 +8,21 @@ import DocumentForm from './DocumentForm';
 class DocumentCreate extends Component {
   componentWillMount() {
     this.props.documentClear();
+    this.initAnalytics();
   }
 
   onButtonPress() {
     const { name, number, image } = this.props;
-
+    this.trackEventSave();
     this.props.documentCreate({ name, number, image });
+  }
+
+  initAnalytics() {
+    Expo.Segment.track('Tela criar documento');
+  }
+
+  trackEventSave() {
+    Expo.Segment.track('Action salvar documento');
   }
 
   render() {
