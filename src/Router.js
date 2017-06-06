@@ -36,7 +36,13 @@ const RouterComponent = () => {
           leftButtonIconStyle={styles.leftButtonIcon}
           leftButtonStyle={styles.leftButton}
         />
-        <Scene key="documentEdit" component={DocumentEdit} title="Atualizar documento" />
+        <Scene
+          key="documentEdit"
+          component={DocumentEdit}
+          title="Atualizar documento"
+          leftButtonIconStyle={styles.leftButtonIcon}
+          leftButtonStyle={styles.leftButton}
+        />
       </Scene>
     </Router>
   );
@@ -59,7 +65,7 @@ const styles = {
      tintColor: 'white'
  },
  leftButton: {
-   paddingTop: 10
+   paddingTop: 5
  },
  rightButton: {
    marginRight: 5,
