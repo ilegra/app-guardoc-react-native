@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Expo from 'expo';
 import { documentUpdate, documentClear, documentSave, documentDelete } from '../actions';
@@ -40,28 +41,30 @@ class DocumentCreate extends Component {
 
   render() {
     return (
-      <Card>
-        <DocumentForm />
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Salvar alterações
-          </Button>
-        </CardSection>
+      <ScrollView>
+        <Card style={{ flex: 1 }}>
+          <DocumentForm />
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>
+              SALVAR ALTERAÇÕES
+            </Button>
+          </CardSection>
 
-        <CardSection>
-          <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
-            Excluir
-          </Button>
-        </CardSection>
-        <Confirm
-          visible={this.state.showModal}
-          onAccept={this.onAccept.bind(this)}
-          onDecline={this.onDecline.bind(this)}
-        >
-          Deseja excluir o documento?
-        </Confirm>
+          <CardSection>
+            <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+              EXCLUIR
+            </Button>
+          </CardSection>
+          <Confirm
+            visible={this.state.showModal}
+            onAccept={this.onAccept.bind(this)}
+            onDecline={this.onDecline.bind(this)}
+          >
+            Deseja excluir o documento?
+          </Confirm>
 
-      </Card>
+        </Card>
+      </ScrollView>
     );
   }
 }

@@ -36,7 +36,13 @@ const RouterComponent = () => {
           leftButtonIconStyle={styles.leftButtonIcon}
           leftButtonStyle={styles.leftButton}
         />
-        <Scene key="documentEdit" component={DocumentEdit} title="Atualizar documento" />
+        <Scene
+          key="documentEdit"
+          component={DocumentEdit}
+          title="Atualizar documento"
+          leftButtonIconStyle={styles.leftButtonIcon}
+          leftButtonStyle={styles.leftButton}
+        />
       </Scene>
     </Router>
   );
@@ -48,24 +54,23 @@ const styles = {
    flex: 2,
    backgroundColor: '#b8d329',
    height: 80,
-   borderWidth: 0
+   borderWidth: 0,
+   paddingTop: 10
  },
  navTitle: {
    color: 'white',
-   paddingTop: 30,
    fontWeight: 'bold'
  },
  leftButtonIcon: {
      tintColor: 'white'
  },
  leftButton: {
-   paddingTop: 10
+   paddingTop: 5
  },
  rightButton: {
-   marginTop: 5,
    marginRight: 5,
-   width: 30,
-   height: 30
+   width: 35,
+   height: 35
  },
  onRight: {
    tintColor: 'green'

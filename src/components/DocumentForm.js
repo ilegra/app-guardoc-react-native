@@ -27,7 +27,7 @@ class DocumentForm extends Component {
         <CardSection>
           <ImageCamera
             value={this.props.image}
-            onChange={value => this.props.documentUpdate({ prop: 'image', value })}
+            onPress={value => this.props.documentUpdate({ prop: 'image', value })}
           />
         </CardSection>
       </View>
