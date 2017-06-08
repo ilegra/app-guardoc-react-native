@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { FacebookAds } from 'expo';
-import ListItem from './ListItem';
+import CardDocument from './CardDocument';
 
 class AdComponent extends React.Component {
   document = {
@@ -12,7 +12,7 @@ class AdComponent extends React.Component {
   render() {
     return (
       <View>
-        <ListItem document={this.document} />
+        <CardDocument document={this.document} />
       </View>
     );
   }
