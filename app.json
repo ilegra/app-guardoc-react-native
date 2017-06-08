@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "17.0.0"
+    "name": "Guardoc",
+   "icon": "https://gustavogl.files.wordpress.com/2017/06/launcher-icone-appstore-512px.png",
+   "version": "1.0.0",
+   "slug": "guardoc",
+   "sdkVersion": "16.0.0",
+   "ios": {
+     "bundleIdentifier": "com.ilegra.guardoc",
+   },
+   "android": {
+     "package": "com.ilegra.guardoc",
+   }
   }
 }
