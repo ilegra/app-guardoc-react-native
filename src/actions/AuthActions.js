@@ -23,7 +23,7 @@ export const passwordChanged = (text) => {
 };
 
 export const loginUser = () => {
-    return function (dispatch) {
+    return (dispatch) => {
         //dispatch({ type: LOGIN_USER });
 
       firebase.auth().signInAnonymously()
@@ -31,12 +31,13 @@ export const loginUser = () => {
         .catch((error) => {
         console.log('não logou');
         console.log(error);
+        loginUserFail(dispatch);
         });
     };
 };
 
 const loginUserFail = (dispatch) => {
-  //todo
+  dispatch({ type: LOGIN_USER_FAIL });
 };
 
 const loginUserSuccess = (dispatch, user) => {
