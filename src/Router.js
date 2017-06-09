@@ -28,6 +28,7 @@ const RouterComponent = () => {
           onRight={() => Actions.documentCreate()}
           rightButtonIconStyle={styles.rightButton}
           rightButtonImage={require('./components/img/adicionar.png')}
+          type="reset"
         />
         <Scene
           key="documentCreate"

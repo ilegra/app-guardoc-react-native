@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { documentUpdate } from '../../actions';
 
 class ImageCamera extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props.value);
+  }
   state = {
     image: null,
   };
@@ -23,10 +27,14 @@ class ImageCamera extends React.Component {
 
   render() {
     const { image } = this.state;
-    let imageUrl = require('../img/camera.png');
+    let imageUrl;
 
     if (image != null) {
        imageUrl = { uri: image };
+    } else if (this.props.value != null) {
+      imageUrl = { uri: this.props.value };
+    } else {
+      imageUrl = require('../img/camera.png');
     }
 
     return (
