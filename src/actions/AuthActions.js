@@ -29,6 +29,7 @@ export const loginUser = () => {
       firebase.auth().signInAnonymously()
         .then(user => loginUserSuccess(dispatch, user))
         .catch((error) => {
+        console.log('não logou');
         console.log(error);
         });
     };

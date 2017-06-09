@@ -29,7 +29,7 @@ class CardDocument extends Component {
                   style={imageStyle}
                   source={{ uri: image }}
                 />
-              </CardSection>
+            </CardSection>
         </Card>
     );
   }
@@ -38,7 +38,8 @@ class CardDocument extends Component {
 const styles = {
 
   headerStyle: {
-    backgroundColor: '#599db2'
+    backgroundColor: '#599db2',
+    borderBottomWidth: 0
   },
 
   headerContentStyle: {
@@ -47,7 +48,8 @@ const styles = {
     paddingRight: 7,
     paddingLeft: 7,
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    flex: 1
   },
 
   headerNameStyle: {
@@ -59,14 +61,15 @@ const styles = {
   headerNumberStyle: {
       backgroundColor: '#b8d329',
       padding: 5,
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
+      alignSelf: 'stretch'
   },
 
   headerNumberContentStyle: {
       fontSize: 22,
       fontWeight: 'bold',
       color: 'white',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
   },
 
 

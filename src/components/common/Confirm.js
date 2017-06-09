@@ -4,7 +4,7 @@ import { CardSection } from './CardSection';
 import { Button } from './Button';
 
 const Confirm = ({ children, visible, onAccept, onDecline }) => {
-  const { containerStyle, textStyle, CardSectionStyle } = styles;
+  const { containerStyle, textStyle, cardSectionStyle, buttonStyle } = styles;
 
   return (
     <Modal
@@ -14,15 +14,17 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
       onRequestClose={() => {}}
     >
       <View style={containerStyle}>
-        <CardSection style={CardSectionStyle}>
+        <CardSection style={cardSectionStyle}>
           <Text style={textStyle}>
             {children}
           </Text>
         </CardSection>
 
-        <CardSection>
-          <Button onPress={onAccept}>SIM</Button>
-          <Button onPress={onDecline}>NÃO</Button>
+        <CardSection style={cardSectionStyle}>
+          <Button onPress={onAccept} style={buttonStyle}>SIM</Button>
+        </CardSection>
+        <CardSection style={cardSectionStyle}>
+          <Button onPress={onDecline} style={buttonStyle}>NÃO</Button>
         </CardSection>
       </View>
     </Modal>
@@ -30,8 +32,16 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
 };
 
 const styles = {
-  CardSectionStyle: {
+  containerStyle: {
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    position: 'relative',
+    flex: 1,
     justifyContent: 'center'
+  },
+  cardSectionStyle: {
+    justifyContent: 'center',
+    padding: 10,
+    borderBottomWidth: 0
   },
   textStyle: {
     flex: 1,
@@ -39,11 +49,10 @@ const styles = {
     textAlign: 'center',
     lineHeight: 40
   },
-  containerStyle: {
-    backgroundColor: 'rgba(0, 0, 0, 0.75)',
-    position: 'relative',
-    flex: 1,
-    justifyContent: 'center'
+  buttonStyle: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'red',
+    color: 'red'
   }
 };
 

@@ -50,7 +50,7 @@ class DocumentCreate extends Component {
             </Button>
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ paddingTop: 5 }}>
             <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
               EXCLUIR
             </Button>

@@ -10,14 +10,14 @@ class DocumentForm extends Component {
   render() {
     return (
       <View>
-        <CardSection>
+        <CardSection style={{ padding: 10 }}>
           <Input
             placeholder="CPF"
             value={this.props.name}
             onChangeText={value => this.props.documentUpdate({ prop: 'name', value })}
           />
         </CardSection>
-        <CardSection>
+        <CardSection style={{ padding: 10 }}>
           <Input
             placeholder="123.456.789-00"
             value={this.props.number}

@@ -52,17 +52,19 @@ class ImageCamera extends React.Component {
 const styles = {
   viewStyle: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: 'stretch'
   },
   imageStyle: {
-    width: 280,
-    height: 210
+    height: 250,
+    flex: 1,
+    width: null
   },
   textStyle: {
     textAlign: 'center',
     color: 'rgba(0,0,0,0.7)',
-    fontSize: 16
+    fontSize: 16,
+    paddingVertical: 15
   }
 };
 
