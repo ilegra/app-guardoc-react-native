@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { View, Text, ListView } from 'react-native';
+import { View, ScrollView, Text, ListView } from 'react-native';
 import Expo from 'expo';
+import { FacebookAds } from 'expo';
 import firebase from 'firebase';
 import { documentFetch } from '../actions';
 import ListItem from './common/ListItem';
+import AdComponent from './common/AdComponent';
+
+const adsManager = new FacebookAds.NativeAdsManager('423524284700930_423531444700214', 1);
 
 class DocumentList extends Component {
 
@@ -37,16 +41,20 @@ class DocumentList extends Component {
     return <ListItem document={document} />;
   }
 
-
   render() {
     return (
-      <View>
-        <ListView
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-        />
-      </View>
+      <ScrollView>
+        <View>
+          <ListView
+            enableEmptySections
+            dataSource={this.dataSource}
+            renderRow={this.renderRow}
+          />
+        </View>
+        <View>
+          <AdComponent adsManager={adsManager} />
+        </View>
+      </ScrollView>
     );
   }
 }
