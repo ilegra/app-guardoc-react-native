@@ -7,7 +7,6 @@ import { documentUpdate } from '../../actions';
 class ImageCamera extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.value);
   }
   state = {
     image: null,
