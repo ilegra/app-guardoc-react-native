@@ -3,14 +3,14 @@ import { Text, View, Modal } from 'react-native';
 import { CardSection } from './CardSection';
 import { Button } from './Button';
 
-const Confirm = ({ children, visible, onAccept, onDecline }) => {
+const Information = ({ children, visible, onAccept }) => {
   const { containerStyle, textStyle, cardSectionStyle, buttonStyle } = styles;
 
   return (
     <Modal
       visible={visible}
       transparent
-      animationType="fade"
+      animationType="slide"
       onRequestClose={() => {}}
     >
       <View style={containerStyle}>
@@ -21,10 +21,7 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
         </CardSection>
 
         <CardSection style={cardSectionStyle}>
-          <Button onPress={onAccept} style={buttonStyle}>SIM</Button>
-        </CardSection>
-        <CardSection style={cardSectionStyle}>
-          <Button onPress={onDecline} style={buttonStyle}>NÃO</Button>
+          <Button onPress={onAccept} style={buttonStyle}>OK</Button>
         </CardSection>
       </View>
     </Modal>
@@ -56,4 +53,4 @@ const styles = {
   }
 };
 
-export { Confirm };
+export { Information };
