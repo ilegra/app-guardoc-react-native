@@ -5,6 +5,7 @@ import Expo from 'expo';
 import { documentUpdate, documentClear, documentCreate } from '../actions';
 import { Card, CardSection, Button } from './common';
 import DocumentForm from './DocumentForm';
+import AdBanner from './common/AdBanner';
 
 class DocumentCreate extends Component {
   componentWillMount() {
@@ -31,13 +32,13 @@ class DocumentCreate extends Component {
       <ScrollView>
         <Card>
           <DocumentForm {...this.props} />
-
           <CardSection>
             <Button onPress={this.onButtonPress.bind(this)}>
               SALVAR
             </Button>
           </CardSection>
         </Card>
+        <AdBanner placementId="423524284700930_423531444700214" />
       </ScrollView>
     );
   }

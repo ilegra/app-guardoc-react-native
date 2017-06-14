@@ -18,10 +18,10 @@ class DocumentCreate extends Component {
   }
 
   onButtonPress() {
-  const { name, number, image } = this.props;
-  Expo.Segment.track('Action salvar alterações');
-  this.props.documentSave({ name, number, image, uid: this.props.document.uid });
-}
+    const { name, number, image } = this.props;
+    Expo.Segment.track('Action salvar alterações');
+    this.props.documentSave({ name, number, image, uid: this.props.document.uid });
+  }
 
   onAccept() {
     const { uid } = this.props.document;
