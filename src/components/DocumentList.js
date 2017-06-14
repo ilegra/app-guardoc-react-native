@@ -44,6 +44,16 @@ class DocumentList extends Component {
       );
   }
 
+  renderListEmpty() {
+      if (size === 0) {
+        return (
+          <View>
+            <ListEmpty />
+          </View>
+        );
+      }
+  }
+
   renderRow(document) {
     cont++;
     if ((cont === Math.round(size / 2)) || (cont === size)) {
@@ -53,7 +63,7 @@ class DocumentList extends Component {
           <AdComponent adsManager={adsManager} />
         </View>
       );
-    } else {
+    } else if (size !== 0) {
       return (
         <View>
           <ListItem document={document} />
@@ -74,6 +84,7 @@ class DocumentList extends Component {
             renderRow={this.renderRow}
           />
         </View>
+        {this.renderListEmpty()}
       </ScrollView>
     );
   }
