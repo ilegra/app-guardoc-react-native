@@ -7,18 +7,18 @@ import { FacebookAds } from 'expo';
 import firebase from 'firebase';
 import { documentFetch } from '../actions';
 import ListItem from './common/ListItem';
+import ListEmpty from './common/ListEmpty';
 import AdComponent from './common/AdComponent';
 
 const adsManager = new FacebookAds.NativeAdsManager('423524284700930_423531444700214', 1);
+let cont = 0, size = 0;
 
 class DocumentList extends Component {
-
   componentWillMount() {
     this.props.documentFetch();
     this.createDataSource(this.props);
     this.initAnalytics();
   }
-
   componentWillReceiveProps(nextProps) {
     this.createDataSource(nextProps);
   }
@@ -33,15 +33,38 @@ class DocumentList extends Component {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-
     this.dataSource = ds.cloneWithRows(documents);
   }
 
+  renderAd() {
+      return (
+        <View>
+          <AdComponent adsManager={adsManager} />
+        </View>
+      );
+  }
+
   renderRow(document) {
-    return <ListItem document={document} />;
+    cont++;
+    if ((cont === Math.round(size / 2)) || (cont === size)) {
+      return (
+        <View>
+          <ListItem document={document} />
+          <AdComponent adsManager={adsManager} />
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <ListItem document={document} />
+        </View>
+      );
+    }
   }
 
   render() {
+    size = this.props.documents.length;
+    cont = 0;
     return (
       <ScrollView>
         <View>
@@ -50,9 +73,6 @@ class DocumentList extends Component {
             dataSource={this.dataSource}
             renderRow={this.renderRow}
           />
-        </View>
-        <View>
-          <AdComponent adsManager={adsManager} />
         </View>
       </ScrollView>
     );
