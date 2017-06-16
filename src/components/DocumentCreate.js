@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import Expo from 'expo';
 import { documentUpdate, documentClear, documentCreate } from '../actions';
@@ -29,17 +29,21 @@ class DocumentCreate extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <Card>
-          <DocumentForm {...this.props} />
-          <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-              SALVAR
-            </Button>
-          </CardSection>
-        </Card>
-        <AdBanner placementId="423524284700930_423531444700214" />
-      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <Card>
+            <DocumentForm {...this.props} />
+            <CardSection>
+              <Button onPress={this.onButtonPress.bind(this)}>
+                SALVAR
+              </Button>
+            </CardSection>
+          </Card>
+        </ScrollView>
+        <View>
+          <AdBanner placementId="423524284700930_423531444700214" />
+        </View>
+      </View>
     );
   }
 }
