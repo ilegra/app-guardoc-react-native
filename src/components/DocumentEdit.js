@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import Expo from 'expo';
 import { documentUpdate, documentClear, documentSave, documentDelete } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 import DocumentForm from './DocumentForm';
+import AdBanner from './common/AdBanner';
 
 class DocumentCreate extends Component {
   state = { showModal: false };
@@ -18,10 +19,10 @@ class DocumentCreate extends Component {
   }
 
   onButtonPress() {
-  const { name, number, image } = this.props;
-  Expo.Segment.track('Action salvar alterações');
-  this.props.documentSave({ name, number, image, uid: this.props.document.uid });
-}
+    const { name, number, image } = this.props;
+    Expo.Segment.track('Action salvar alterações');
+    this.props.documentSave({ name, number, image, uid: this.props.document.uid });
+  }
 
   onAccept() {
     const { uid } = this.props.document;
@@ -41,30 +42,33 @@ class DocumentCreate extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <Card style={{ flex: 1 }}>
-          <DocumentForm />
-          <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-              SALVAR ALTERAÇÕES
-            </Button>
-          </CardSection>
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <Card style={{ flex: 1 }}>
+            <DocumentForm />
+            <CardSection>
+              <Button onPress={this.onButtonPress.bind(this)}>
+                SALVAR ALTERAÇÕES
+              </Button>
+            </CardSection>
 
-          <CardSection>
-            <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
-              EXCLUIR
-            </Button>
-          </CardSection>
-          <Confirm
-            visible={this.state.showModal}
-            onAccept={this.onAccept.bind(this)}
-            onDecline={this.onDecline.bind(this)}
-          >
-            Deseja excluir o documento?
-          </Confirm>
+            <CardSection style={{ paddingTop: 5 }}>
+              <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+                EXCLUIR
+              </Button>
+            </CardSection>
+            <Confirm
+              visible={this.state.showModal}
+              onAccept={this.onAccept.bind(this)}
+              onDecline={this.onDecline.bind(this)}
+            >
+              Deseja excluir o documento?
+            </Confirm>
 
-        </Card>
-      </ScrollView>
+          </Card>
+        </ScrollView>
+        <AdBanner placementId="423524284700930_423531444700214" />
+      </View>
     );
   }
 }

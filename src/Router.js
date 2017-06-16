@@ -10,7 +10,7 @@ const RouterComponent = () => {
     <Router
       navigationBarStyle={styles.navBar}
       titleStyle={styles.navTitle}
-      sceneStyle={{ paddingTop: 90 }}
+      sceneStyle={{ paddingTop: 90, backgroundColor: '#f2f2f2' }}
     >
       <Scene key="auth">
         <Scene
@@ -28,6 +28,7 @@ const RouterComponent = () => {
           onRight={() => Actions.documentCreate()}
           rightButtonIconStyle={styles.rightButton}
           rightButtonImage={require('./components/img/adicionar.png')}
+          type="reset"
         />
         <Scene
           key="documentCreate"
@@ -69,8 +70,8 @@ const styles = {
  },
  rightButton: {
    marginRight: 5,
-   width: 35,
-   height: 35
+   width: 30,
+   height: 30
  },
  onRight: {
    tintColor: 'green'

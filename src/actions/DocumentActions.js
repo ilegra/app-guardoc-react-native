@@ -22,6 +22,7 @@ export const documentCreate = ({ name, number, image }) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents`)
       .push({ name, number, image })
       .then(() => {
+        Actions.documentList();
         dispatch({ type: DOCUMENT_CREATE });
       });
   };
@@ -43,8 +44,8 @@ export const documentSave = ({ name, number, image, uid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents/${uid}`)
       .set({ name, number, image })
       .then(() => {
+        Actions.documentList();
         dispatch({ type: DOCUMENT_SAVE });
-        Actions.main({ type: 'reset' });
       });
   };
 };
@@ -55,8 +56,8 @@ export const documentDelete = ({ uid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/documents/${uid}`)
       .remove()
       .then(() => {
+        Actions.documentList();
         dispatch({ type: DOCUMENT_DELETE });
-        Actions.main({ type: 'reset' });
       });
   };
 };
