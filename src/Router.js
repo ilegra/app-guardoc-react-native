@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
+import Expo from 'expo';
 import DocumentList from './components/DocumentList';
 import DocumentCreate from './components/DocumentCreate';
 import DocumentEdit from './components/DocumentEdit';
@@ -25,7 +26,7 @@ const RouterComponent = () => {
           key="documentList"
           component={DocumentList}
           title="Meus documentos"
-          onRight={() => Actions.documentCreate()}
+          onRight={() => adicionarDocumento()}
           rightButtonIconStyle={styles.rightButton}
           rightButtonImage={require('./components/img/adicionar.png')}
           type="reset"
@@ -47,6 +48,11 @@ const RouterComponent = () => {
       </Scene>
     </Router>
   );
+};
+
+const adicionarDocumento = () => {
+   Actions.documentCreate();
+   Expo.Segment.track('Action adicionar documento');
 };
 
 

@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Expo from 'expo';
 
 class ListEmpty extends React.Component {
   onPress() {
-    console.log('button precionado');
     Actions.documentCreate();
+    Expo.Segment.track('Action adicionar documento (ListEmpty)');
   }
 
   render() {
