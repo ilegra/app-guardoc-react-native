@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Image, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
@@ -32,39 +32,41 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
+      <ScrollView>
+        <View style={styles.viewStyle}>
+          <Image source={require('./img/logo.png')} style={styles.imageStyle} />
+        </View>
+        <Card>
+          <CardSection>
+            <Input
+              placeholder="usuario@dominio.com"
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
+            />
+          </CardSection>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Senha"
-            placeholder="******"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
+          <CardSection>
+            <Input
+              secureTextEntry
+              placeholder="******"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+            />
+          </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
-
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
-        <CardSection>
-          <Text style={styles.infoTextStyle}>
-            *Se você estiver entrando pela primeira vez, insira os dados para cadastro.
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
           </Text>
-        </CardSection>
-      </Card>
+
+          <CardSection>
+            {this.renderButton()}
+          </CardSection>
+        </Card>
+        <View>
+          <Button onPress={this.onButtonPress.bind(this)}>Continuar sem cadastro</Button>
+          <Button>Nova conta</Button>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -76,8 +78,17 @@ const styles = {
     color: 'red'
   },
   infoTextStyle: {
+    paddingTop: 10,
     fontSize: 12,
-    color: 'rgba(0,0,0,0.4)'
+    color: '#4d4d4d'
+  },
+  viewStyle: {
+    padding: 5,
+    alignItems: 'center'
+  },
+  imageStyle: {
+    height: 245,
+    width: 200
   }
 };
 
