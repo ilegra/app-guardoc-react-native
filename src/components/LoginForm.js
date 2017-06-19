@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Image, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
@@ -18,13 +18,17 @@ class LoginForm extends Component {
     this.props.loginUser();
   }
 
+  onLoginPress() {
+    this.props.loginUserWithEmailAndPassword();
+  }
+
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button onPress={this.onLoginPress.bind(this)}>
         Entrar
       </Button>
     );
@@ -100,5 +104,5 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, {
-   emailChanged, passwordChanged, loginUser
+   emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword
 })(LoginForm);

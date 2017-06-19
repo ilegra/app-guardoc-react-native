@@ -36,6 +36,14 @@ export const loginUser = () => {
     };
 };
 
+export const loginUserWithEmailAndPassword = ({ email, password }) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(user => loginUserSuccess(dispatch, user))
+      .catch(() => loginUserFail(dispatch));
+  };
+};
+
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
