@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
-import Expo from 'expo';
+import Expo, { Font } from 'expo';
 import reducers from './src/reducers';
 import Router from './src/Router';
 
@@ -11,6 +11,7 @@ export default class App extends Component {
   componentWillMount() {
     this.initFirebase();
     this.initAnalytics();
+    this.initFonts();
   }
 
   initFirebase() {
@@ -30,6 +31,15 @@ export default class App extends Component {
     Expo.Segment.initializeAndroid(segmentWriteKey);
     Expo.Segment.initializeIOS(segmentWriteKey);
     Expo.Segment.track('Tela login');
+  }
+
+  initFonts() {
+    Font.loadAsync({
+      'open-sans-bold': require('./src/components/fonts/OpenSans-Bold.ttf'),
+      'open-sans-extrabold': require('./src/components/fonts/OpenSans-ExtraBold.ttf'),
+      'open-sans-light': require('./src/components/fonts/OpenSans-Light.ttf'),
+      'open-sans-regular': require('./src/components/fonts/OpenSans-Regular.ttf'),
+    });
   }
 
   render() {

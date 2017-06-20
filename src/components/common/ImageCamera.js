@@ -63,7 +63,8 @@ const styles = {
     textAlign: 'center',
     color: 'rgba(0,0,0,0.7)',
     fontSize: 16,
-    paddingVertical: 15
+    paddingVertical: 15,
+    fontFamily: 'open-sans-light',
   }
 };
 
