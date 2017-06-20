@@ -17,8 +17,8 @@ const styles = {
   textStyle: {
     alignSelf: 'center',
     color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 18,
+    fontFamily: 'open-sans-bold',
     paddingTop: 10,
     paddingBottom: 10,
   },

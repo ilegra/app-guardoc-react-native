@@ -11,7 +11,7 @@ const RouterComponent = () => {
     <Router
       navigationBarStyle={styles.navBar}
       titleStyle={styles.navTitle}
-      sceneStyle={{ paddingTop: 90, backgroundColor: '#f2f2f2' }}
+      sceneStyle={{ paddingTop: 70, backgroundColor: '#f2f2f2' }}
     >
       <Scene key="auth">
         <Scene
@@ -25,7 +25,7 @@ const RouterComponent = () => {
         <Scene
           key="documentList"
           component={DocumentList}
-          title="Meus documentos"
+          title="Lista"
           onRight={() => adicionarDocumento()}
           rightButtonIconStyle={styles.rightButton}
           rightButtonImage={require('./components/img/adicionar.png')}
@@ -34,14 +34,14 @@ const RouterComponent = () => {
         <Scene
           key="documentCreate"
           component={DocumentCreate}
-          title="Adicionar documento"
+          title="Novo"
           leftButtonIconStyle={styles.leftButtonIcon}
           leftButtonStyle={styles.leftButton}
         />
         <Scene
           key="documentEdit"
           component={DocumentEdit}
-          title="Atualizar documento"
+          title="Atualizar"
           leftButtonIconStyle={styles.leftButtonIcon}
           leftButtonStyle={styles.leftButton}
         />
@@ -60,13 +60,14 @@ const styles = {
   navBar: {
    flex: 2,
    backgroundColor: '#b8d329',
-   height: 80,
+   height: 70,
    borderWidth: 0,
    paddingTop: 10
  },
  navTitle: {
    color: 'white',
-   fontWeight: 'bold'
+   fontFamily: 'open-sans-bold',
+   fontSize: 22
  },
  leftButtonIcon: {
      tintColor: 'white'

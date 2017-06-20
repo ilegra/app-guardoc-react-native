@@ -25,6 +25,7 @@ const styles = {
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18,
+    fontFamily: 'open-sans-light',
     lineHeight: 23,
     flex: 1,
     alignSelf: 'stretch'

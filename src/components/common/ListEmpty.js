@@ -15,8 +15,8 @@ class ListEmpty extends React.Component {
     return (
       <ScrollView>
       <View style={styles.viewStyle}>
-        <Text style={{ flex: 1, marginBottom: 100 }}>Você ainda não tem nenhum documento!</Text>
-        <TouchableOpacity onPress={this.onPress} style={{ flex: 3 }}>
+        <Text style={styles.infoText}>Você ainda não tem nenhum documento!</Text>
+        <TouchableOpacity onPress={this.onPress}>
           <Image source={imageUrl} style={styles.imageStyle} />
           <Text style={styles.textStyle}>Criar novo documento</Text>
         </TouchableOpacity>
@@ -29,17 +29,24 @@ class ListEmpty extends React.Component {
 const styles = {
   viewStyle: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 50
   },
   imageStyle: {
     height: 200,
-    width: null
+    width: 200,
+    alignSelf: 'center'
   },
   textStyle: {
      paddingTop: 20,
-     fontWeight: 'bold',
+     fontFamily: 'open-sans-bold',
      fontSize: 20,
-     color: '#484848'
+     color: '#4d4d4d'
+  },
+  infoText: {
+    fontFamily: 'open-sans-light',
+    marginBottom: 60,
+    color: '#4d4d4d'
   }
 };
 

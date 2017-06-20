@@ -55,7 +55,8 @@ const styles = {
   headerNameStyle: {
     fontSize: 18,
     color: 'white',
-    marginBottom: 7
+    marginBottom: 7,
+    fontFamily: 'open-sans-light',
   },
 
   headerNumberStyle: {
@@ -67,7 +68,7 @@ const styles = {
 
   headerNumberContentStyle: {
       fontSize: 22,
-      fontWeight: 'bold',
+      fontFamily: 'open-sans-bold',
       color: 'white',
       justifyContent: 'space-around',
   },
