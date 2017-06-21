@@ -29,7 +29,7 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onPress={this.onLoginPress.bind(this)}>
+      <Button buttonStyleProps={styles.loginStyle} onPress={this.onLoginPress.bind(this)}>
         Entrar
       </Button>
     );
@@ -41,6 +41,9 @@ class LoginForm extends Component {
         <View style={styles.viewStyle}>
           <Image source={require('./img/logo.png')} style={styles.imageStyle} />
         </View>
+        <Text style={styles.errorTextStyle}>
+          {this.props.error}
+        </Text>
         <Card>
           <CardSection>
             <Input
@@ -59,15 +62,11 @@ class LoginForm extends Component {
             />
           </CardSection>
 
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
-
           <CardSection>
             {this.renderButton()}
           </CardSection>
         </Card>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
           <Button
             buttonStyleProps={styles.buttonStyle}
             textStyleProps={styles.registerStyle}
@@ -89,7 +88,7 @@ class LoginForm extends Component {
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 18,
     alignSelf: 'center',
     color: 'red'
   },
@@ -109,13 +108,23 @@ const styles = {
   buttonStyle: {
     backgroundColor: 'transparent'
   },
+  loginStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#b8d329',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    elevation: 1,
+  },
   registerStyle: {
     color: '#599db2',
-    fontSize: 14,
+    fontSize: 16,
   },
   autoLoginStyle: {
     color: '#b8d329',
-    fontSize: 14,
+    fontSize: 16,
   }
 };
 
