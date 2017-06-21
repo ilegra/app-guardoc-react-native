@@ -67,9 +67,20 @@ class LoginForm extends Component {
             {this.renderButton()}
           </CardSection>
         </Card>
-        <View>
-          <Button onPress={this.onButtonPress.bind(this)}>Continuar sem cadastro</Button>
-          <Button>Nova conta</Button>
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            buttonStyleProps={styles.buttonStyle}
+            textStyleProps={styles.registerStyle}
+          >
+            Fazer cadastro
+          </Button>
+          <Button
+            buttonStyleProps={styles.buttonStyle}
+            textStyleProps={styles.autoLoginStyle}
+            onPress={this.onButtonPress.bind(this)}
+          >
+            Entrar sem cadastro
+          </Button>
         </View>
       </ScrollView>
     );
@@ -94,6 +105,17 @@ const styles = {
   imageStyle: {
     height: 245,
     width: 200
+  },
+  buttonStyle: {
+    backgroundColor: 'transparent'
+  },
+  registerStyle: {
+    color: '#599db2',
+    fontSize: 14,
+  },
+  autoLoginStyle: {
+    color: '#b8d329',
+    fontSize: 14,
   }
 };
 
