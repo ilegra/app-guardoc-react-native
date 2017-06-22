@@ -24,8 +24,6 @@ export const passwordChanged = (text) => {
 
 export const loginUser = () => {
     return (dispatch) => {
-        //dispatch({ type: LOGIN_USER });
-
       firebase.auth().signInAnonymously()
         .then(user => loginUserSuccess(dispatch, user))
         .catch(() => {
