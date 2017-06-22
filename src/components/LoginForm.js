@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Image, ScrollView, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
@@ -18,66 +18,124 @@ class LoginForm extends Component {
     this.props.loginUser();
   }
 
+  onLoginPress() {
+    const { email, password } = this.props;
+    this.props.loginUserWithEmailAndPassword({ email, password });
+  }
+
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button buttonStyleProps={styles.loginStyle} onPress={this.onLoginPress.bind(this)}>
         Entrar
       </Button>
     );
   }
 
+  onResetPassword() {
+    const { email } = this.props;
+    this.props.redefinePassword({ email });
+  }
+
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
+      <ScrollView>
+        <View style={styles.viewStyle}>
+          <Image source={require('./img/logo.png')} style={styles.imageStyle} />
+        </View>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Senha"
-            placeholder="******"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
-
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
-
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
-        <CardSection>
-          <Text style={styles.infoTextStyle}>
-            *Se você estiver entrando pela primeira vez, insira os dados para cadastro.
+        <TouchableOpacity onPress={this.onResetPassword.bind(this)}>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
           </Text>
-        </CardSection>
-      </Card>
+        </TouchableOpacity>
+
+        <Card>
+          <CardSection style={{ padding: 10 }}>
+            <Input
+              placeholder="usuario@dominio.com"
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
+            />
+          </CardSection>
+
+          <CardSection style={{ padding: 10 }}>
+            <Input
+              secureTextEntry
+              placeholder="********"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+            />
+          </CardSection>
+
+          <View>
+            {this.renderButton()}
+          </View>
+        </Card>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+          <Button
+            buttonStyleProps={styles.buttonStyle}
+            textStyleProps={styles.registerStyle}
+          >
+            Fazer cadastro
+          </Button>
+          <Button
+            buttonStyleProps={styles.buttonStyle}
+            textStyleProps={styles.autoLoginStyle}
+            onPress={this.onButtonPress.bind(this)}
+          >
+            Entrar sem cadastro
+          </Button>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 18,
     alignSelf: 'center',
     color: 'red'
   },
   infoTextStyle: {
+    paddingTop: 10,
     fontSize: 12,
-    color: 'rgba(0,0,0,0.4)'
+    color: '#4d4d4d'
+  },
+  viewStyle: {
+    padding: 5,
+    alignItems: 'center'
+  },
+  imageStyle: {
+    flex: 1,
+    height: 180,
+    width: 160,
+    resizeMode: 'contain'
+  },
+  buttonStyle: {
+    backgroundColor: 'transparent'
+  },
+  loginStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#b8d329',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  registerStyle: {
+    color: '#599db2',
+    fontSize: 16,
+  },
+  autoLoginStyle: {
+    color: '#b8d329',
+    fontSize: 16,
   }
 };
 
@@ -89,5 +147,5 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, {
-   emailChanged, passwordChanged, loginUser
+   emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword
 })(LoginForm);

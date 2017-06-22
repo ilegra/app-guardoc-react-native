@@ -5,6 +5,7 @@ import DocumentList from './components/DocumentList';
 import DocumentCreate from './components/DocumentCreate';
 import DocumentEdit from './components/DocumentEdit';
 import LoginAuto from './components/LoginAuto';
+import LoginForm from './components/LoginForm';
 
 const RouterComponent = () => {
   return (
@@ -16,7 +17,7 @@ const RouterComponent = () => {
       <Scene key="auth">
         <Scene
           key="login"
-          component={LoginAuto}
+          component={LoginForm}
           title="Logar"
           hideNavBar={true}
         />
