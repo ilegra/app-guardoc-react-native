@@ -54,7 +54,7 @@ class LoginForm extends Component {
         </TouchableOpacity>
 
         <Card>
-          <CardSection>
+          <CardSection style={{ padding: 10 }}>
             <Input
               placeholder="usuario@dominio.com"
               onChangeText={this.onEmailChange.bind(this)}
@@ -62,18 +62,18 @@ class LoginForm extends Component {
             />
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ padding: 10 }}>
             <Input
               secureTextEntry
-              placeholder="******"
+              placeholder="********"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />
           </CardSection>
 
-          <CardSection>
+          <View>
             {this.renderButton()}
-          </CardSection>
+          </View>
         </Card>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
           <Button
