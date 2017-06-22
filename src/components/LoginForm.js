@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, View } from 'react-native';
+import { Text, Image, ScrollView, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword } from '../actions';
+import { emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
@@ -35,15 +35,24 @@ class LoginForm extends Component {
     );
   }
 
+  onResetPassword() {
+    const { email } = this.props;
+    this.props.redefinePassword({ email });
+  }
+
   render() {
     return (
       <ScrollView>
         <View style={styles.viewStyle}>
           <Image source={require('./img/logo.png')} style={styles.imageStyle} />
         </View>
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+
+        <TouchableOpacity onPress={this.onResetPassword.bind(this)}>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+        </TouchableOpacity>
+
         <Card>
           <CardSection>
             <Input
@@ -102,8 +111,10 @@ const styles = {
     alignItems: 'center'
   },
   imageStyle: {
-    height: 245,
-    width: 200
+    flex: 1,
+    height: 180,
+    width: 160,
+    resizeMode: 'contain'
   },
   buttonStyle: {
     backgroundColor: 'transparent'
@@ -136,5 +147,5 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, {
-   emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword
+   emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword
 })(LoginForm);

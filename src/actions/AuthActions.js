@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
   EMAIL_CHANGED,
@@ -41,6 +42,20 @@ export const loginUserWithEmailAndPassword = ({ email, password }) => {
   };
 };
 
+export const redefinePassword = ({ email }) => {
+  const auth = firebase.auth();
+  const emailAddress = email;
+  return () => {
+      auth.sendPasswordResetEmail(emailAddress)
+      .then(() => {
+        emailSend();
+      })
+      .catch(() => {
+        emailNotRegistered();
+      });
+  };
+};
+
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
@@ -51,4 +66,26 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
   Actions.main();
+};
+
+const emailSend = () => {
+  Alert.alert(
+  'Email de alteração de senha enviado!',
+  'Acesse o link do email e insira uma nova senha.',
+  [
+    { text: 'OK', onPress: () => {} },
+  ],
+  { cancelable: false }
+);
+};
+
+const emailNotRegistered = () => {
+  Alert.alert(
+  'Email não encontrado!',
+  'Verifique se o email está digitado corretamente.',
+  [
+    { text: 'OK', onPress: () => {} },
+  ],
+  { cancelable: false }
+  );
 };
