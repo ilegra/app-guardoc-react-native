@@ -6,6 +6,7 @@ import DocumentCreate from './components/DocumentCreate';
 import DocumentEdit from './components/DocumentEdit';
 import LoginAuto from './components/LoginAuto';
 import LoginForm from './components/LoginForm';
+import CreateAccountForm from './components/CreateAccountForm';
 
 const RouterComponent = () => {
   return (
@@ -20,6 +21,13 @@ const RouterComponent = () => {
           component={LoginForm}
           title="Logar"
           hideNavBar={true}
+        />
+        <Scene
+          key="createAccount"
+          component={CreateAccountForm}
+          title="Criar conta"
+          leftButtonIconStyle={styles.leftButtonIcon}
+          hideNavBar={false}
         />
       </Scene>
       <Scene key="main">
@@ -74,7 +82,7 @@ const styles = {
      tintColor: 'white'
  },
  leftButton: {
-   paddingTop: 5
+   paddingTop: 10
  },
  rightButton: {
    marginRight: 5,

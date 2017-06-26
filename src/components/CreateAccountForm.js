@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Text, Image, ScrollView, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
-import { emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword } from '../actions';
+import { emailChanged, passwordChanged, createUserAccount } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
-class LoginForm extends Component {
+class CreateAccountForm extends Component {
 
   onEmailChange(text) {
     this.props.emailChanged(text);
@@ -16,17 +15,8 @@ class LoginForm extends Component {
   }
 
   onButtonPress() {
-    this.props.loginUser();
-  }
-
-  onLoginPress() {
     const { email, password } = this.props;
-    this.props.loginUserWithEmailAndPassword({ email, password });
-  }
-
-  onResetPassword() {
-    const { email } = this.props;
-    this.props.redefinePassword({ email });
+    this.props.createUserAccount({ email, password });
   }
 
   renderButton() {
@@ -35,34 +25,15 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button buttonStyleProps={styles.loginStyle} onPress={this.onLoginPress.bind(this)}>
-        ENTRAR
+      <Button buttonStyleProps={styles.loginStyle} onPress={this.onButtonPress.bind(this)}>
+        CADASTRAR
       </Button>
     );
-  }
-
-  renderErrorMensage() {
-    if (this.props.image != null) {
-      return (
-        <TouchableOpacity onPress={this.onResetPassword.bind(this)} style={styles.errorStyle}>
-          <Image source={require('./img/advertencia.png')} style={styles.errorImageStyle} />
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
-        </TouchableOpacity>
-      );
-    }
   }
 
   render() {
     return (
       <ScrollView>
-        <View style={styles.viewStyle}>
-          <Image source={require('./img/logo.png')} style={styles.imageStyle} />
-        </View>
-
-        {this.renderErrorMensage()}
-
         <Card>
           <CardSection style={{ padding: 10 }}>
             <Input
@@ -85,22 +56,6 @@ class LoginForm extends Component {
             {this.renderButton()}
           </View>
         </Card>
-        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
-          <Button
-            buttonStyleProps={styles.buttonStyle}
-            textStyleProps={styles.registerStyle}
-            onPress={() => Actions.createAccount()}
-          >
-            Fazer cadastro
-          </Button>
-          <Button
-            buttonStyleProps={styles.buttonStyle}
-            textStyleProps={styles.autoLoginStyle}
-            onPress={this.onButtonPress.bind(this)}
-          >
-            Entrar sem cadastro
-          </Button>
-        </View>
       </ScrollView>
     );
   }
@@ -175,5 +130,5 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, {
-   emailChanged, passwordChanged, loginUser, loginUserWithEmailAndPassword, redefinePassword
-})(LoginForm);
+   emailChanged, passwordChanged, createUserAccount
+})(CreateAccountForm);
