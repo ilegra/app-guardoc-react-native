@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   password: '',
   user: null,
   error: '',
-  loading: false
+  loading: false,
+  image: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,7 +26,12 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
-      return { ...state, error: 'Dados incorretos! Esqueceu sua senha?', password: '', loading: false };
+      return {
+        ...state,
+        error: 'Dados incorretos! Esqueceu sua senha?',
+        password: '',
+        loading: false,
+        image: './img/advertencia.png' };
     default:
       return state;
   }

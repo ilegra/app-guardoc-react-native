@@ -42,6 +42,21 @@ export const loginUserWithEmailAndPassword = ({ email, password }) => {
   };
 };
 
+export const createUserAccount = ({ email, password }) => {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(user => {
+       registeredAccount();
+       loginUserSuccess(dispatch, user);
+     })
+      .catch(() => {
+      notRegisteredAccount();
+      loginUserFail(dispatch);
+    });
+  };
+};
+
 export const redefinePassword = ({ email }) => {
   const auth = firebase.auth();
   const emailAddress = email;
@@ -68,23 +83,34 @@ const loginUserSuccess = (dispatch, user) => {
   Actions.main();
 };
 
+
 const emailSend = () => {
-  Alert.alert(
-  'Email de alteração de senha enviado!',
-  'Acesse o link do email e insira uma nova senha.',
-  [
-    { text: 'OK', onPress: () => {} },
-  ],
-  { cancelable: false }
-);
+  alertMensage(
+    'Email de alteração de senha enviado!',
+    'Acesse o link do email e insira uma nova senha.',
+    'OK');
 };
 
 const emailNotRegistered = () => {
+  alertMensage('Email não encontrado!', 'Verifique se o email foi digitado corretamente.', 'OK');
+};
+
+const registeredAccount = () => {
+    alertMensage('Conta registrada com sucesso!', 'Bem vindo ao GuarDOC.', 'CONTINUAR');
+};
+
+const notRegisteredAccount = () => {
+    alertMensage('Conta não registrada.',
+    'Ocorreu um erro ao criar sua conta. Informe um email válido e uma senha de no mínimo 6 caracteres.',
+    'OK');
+};
+
+const alertMensage = (title, mensagem, button) => {
   Alert.alert(
-  'Email não encontrado!',
-  'Verifique se o email está digitado corretamente.',
+  title,
+  mensagem,
   [
-    { text: 'OK', onPress: () => {} },
+    { text: button, onPress: () => {} },
   ],
   { cancelable: false }
   );
