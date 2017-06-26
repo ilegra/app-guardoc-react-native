@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Image, ScrollView, View, TouchableOpacity } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, createUserAccount } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
@@ -62,25 +62,6 @@ class CreateAccountForm extends Component {
 }
 
 const styles = {
-  infoTextStyle: {
-    paddingTop: 10,
-    fontSize: 12,
-    color: '#4d4d4d'
-  },
-  viewStyle: {
-    padding: 5,
-    alignItems: 'center',
-    marginBottom: 30
-  },
-  imageStyle: {
-    flex: 1,
-    height: 180,
-    width: 160,
-    resizeMode: 'contain'
-  },
-  buttonStyle: {
-    backgroundColor: 'transparent'
-  },
   loginStyle: {
     flex: 1,
     alignSelf: 'stretch',
@@ -90,35 +71,6 @@ const styles = {
     shadowOpacity: 0.3,
     shadowRadius: 2,
     elevation: 1,
-  },
-  registerStyle: {
-    color: '#599db2',
-    fontSize: 16,
-    fontFamily: 'open-sans-regular'
-  },
-  autoLoginStyle: {
-    color: '#b8d329',
-    fontSize: 16,
-    fontFamily: 'open-sans-regular'
-  },
-  errorStyle: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      margin: 10,
-      paddingVertical: 10
-  },
-  errorTextStyle: {
-    flex: 3,
-    fontSize: 14,
-    color: '#4d4d4d',
-    fontFamily: 'open-sans-regular'
-  },
-  errorImageStyle: {
-    flex: 1,
-    height: 30,
-    width: 30,
-    resizeMode: 'contain'
   }
 };
 

@@ -85,7 +85,7 @@ class LoginForm extends Component {
             {this.renderButton()}
           </View>
         </Card>
-        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
+        <View style={styles.viewButtonStyle}>
           <Button
             buttonStyleProps={styles.buttonStyle}
             textStyleProps={styles.registerStyle}
@@ -164,6 +164,12 @@ const styles = {
     height: 30,
     width: 30,
     resizeMode: 'contain'
+  },
+  viewButtonStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10
   }
 };
 
