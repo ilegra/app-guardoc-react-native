@@ -64,7 +64,7 @@ const styles = {
     color: 'rgba(0,0,0,0.7)',
     fontSize: 16,
     paddingVertical: 15,
-    fontFamily: 'open-sans-light',
+    fontFamily: 'cour-bold'
   }
 };
 

@@ -23,6 +23,11 @@ class LoginForm extends Component {
     this.props.loginUserWithEmailAndPassword({ email, password });
   }
 
+  onResetPassword() {
+    const { email } = this.props;
+    this.props.redefinePassword({ email });
+  }
+
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
@@ -30,14 +35,22 @@ class LoginForm extends Component {
 
     return (
       <Button buttonStyleProps={styles.loginStyle} onPress={this.onLoginPress.bind(this)}>
-        Entrar
+        ENTRAR
       </Button>
     );
   }
 
-  onResetPassword() {
-    const { email } = this.props;
-    this.props.redefinePassword({ email });
+  renderErrorMensage() {
+    if (this.props.image != null) {
+      return (
+        <TouchableOpacity onPress={this.onResetPassword.bind(this)} style={styles.errorStyle}>
+          <Image source={require('./img/advertencia.png')} style={styles.errorImageStyle} />
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
   }
 
   render() {
@@ -47,11 +60,7 @@ class LoginForm extends Component {
           <Image source={require('./img/logo.png')} style={styles.imageStyle} />
         </View>
 
-        <TouchableOpacity onPress={this.onResetPassword.bind(this)}>
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
-        </TouchableOpacity>
+        {this.renderErrorMensage()}
 
         <Card>
           <CardSection style={{ padding: 10 }}>
@@ -96,11 +105,6 @@ class LoginForm extends Component {
 }
 
 const styles = {
-  errorTextStyle: {
-    fontSize: 18,
-    alignSelf: 'center',
-    color: 'red'
-  },
   infoTextStyle: {
     paddingTop: 10,
     fontSize: 12,
@@ -132,17 +136,38 @@ const styles = {
   registerStyle: {
     color: '#599db2',
     fontSize: 16,
+    fontFamily: 'open-sans-regular'
   },
   autoLoginStyle: {
     color: '#b8d329',
     fontSize: 16,
+    fontFamily: 'open-sans-regular'
+  },
+  errorStyle: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      margin: 10,
+      paddingVertical: 10
+  },
+  errorTextStyle: {
+    flex: 3,
+    fontSize: 14,
+    color: '#4d4d4d',
+    fontFamily: 'open-sans-regular'
+  },
+  errorImageStyle: {
+    flex: 1,
+    height: 30,
+    width: 30,
+    resizeMode: 'contain'
   }
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
+  const { email, password, error, loading, image } = auth;
 
-  return { email, password, error, loading };
+  return { email, password, error, loading, image };
 };
 
 

@@ -39,7 +39,7 @@ const styles = {
   },
   textStyle: {
      paddingTop: 20,
-     fontFamily: 'open-sans-bold',
+     fontFamily: 'cour-bold',
      fontSize: 20,
      color: '#4d4d4d'
   },

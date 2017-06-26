@@ -18,6 +18,8 @@ export default class App extends Component {
      'open-sans-extrabold': require('./src/components/fonts/OpenSans-ExtraBold.ttf'),
      'open-sans-light': require('./src/components/fonts/OpenSans-Light.ttf'),
      'open-sans-regular': require('./src/components/fonts/OpenSans-Regular.ttf'),
+      'cour-regular': require('./src/components/fonts/cour.ttf'),
+      'cour-bold': require('./src/components/fonts/courbd.ttf'),
    });
 
    this.setState({ fontLoaded: true });
