@@ -1,15 +1,23 @@
 {
   "expo": {
     "name": "Guardoc",
-   "icon": "https://gustavogl.files.wordpress.com/2017/06/launcher-icone-appstore-512px.png",
-   "version": "1.0.0",
-   "slug": "guardoc",
-   "sdkVersion": "17.0.0",
-   "ios": {
-     "bundleIdentifier": "com.ilegra.guardoc",
-   },
-   "android": {
-     "package": "com.ilegra.guardoc",
-   }
+    "icon": "https://gustavogl.files.wordpress.com/2017/06/launcher-icone-appstore-512px.png",
+    "version": "1.0.1",
+    "slug": "guardoc",
+    "sdkVersion": "17.0.0",
+    "loading": {
+      "icon": "./src/components/img/logo.png",
+      "hideExponentText": true
+    },
+    "androidStatusBarColor": "#8db51f",
+    "primaryColor" : "#b8d329",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "com.ilegra.guardoc",
+    },
+    "android": {
+      "package": "com.ilegra.guardoc",
+    }
   }
 }
+
